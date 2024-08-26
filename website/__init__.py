@@ -19,7 +19,7 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
-    from .models import User, Note
+    from .models import User
 
     create_db(app)
 
@@ -36,9 +36,12 @@ def create_app():
 
 def create_db(app):
     db_path = 'instance/' + DB_NAME
+    '''
     if os.path.exists(db_path):
         os.remove(db_path)
         print(f"Database file {db_path} removed.")
+
+    '''
 
     with app.app_context():
         db.create_all()
