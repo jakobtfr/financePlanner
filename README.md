@@ -20,4 +20,6 @@ A simple web app to help plan your finances by having a clear overview over your
 
 ## Usage
 
+<img alt="image" src="&quot;C:\Users\jakob\Programming\Projects\financePlanner\readme_pictures\Screenshot%202024-08-29%20195156.png&quot;"/>
+
 
