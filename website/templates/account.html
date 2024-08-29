@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Account{% endblock %}
+{% block content %}
+    {% block centToggle %}
+
+    {% endblock %}
+    <br>
+    <h1 style="text-align: center">Account</h1>
+    Username: {{ user.username }}
+    <br>
+    E-Mail: {{ user.email }}
+    <form method="POST">
+        <br>
+
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/change_password'">Change Password</button>
+        <button type="button" class="btn btn-primary" onclick="delete_account()" >Delete Account</button>
+
+    </form>
+{% endblock %}

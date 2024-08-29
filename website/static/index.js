@@ -91,3 +91,13 @@ function generateSankey() {
     window.location.href = "/"
 });
 }
+
+function delete_account() {
+    if (confirm("Are you sure you want to delete this account? This cannot be undone.")) {
+        fetch('/delete_account', {
+            method: 'DELETE'
+        }).then((_res) => {
+            window.location.href = "/login"
+        });
+    }
+}

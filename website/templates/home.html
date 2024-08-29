@@ -6,8 +6,6 @@
     {% if user.incomes %}
         <h2> Incomes </h2>
     {% endif %}
-
-
     <ul class="list-group list-group-flush" id="incomes"></ul>
     {% for income in user.incomes %}
         <li class="list-group-item">
@@ -16,13 +14,9 @@
                 Type: {{ income.type }}
             {% endif %}
             | Percentage: {{ "%.2f"|format((income.money.value / user.total_income) * 100) }}%
-
-
             <button type="button" class="close" onclick="deleteIncome({{ income.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
-
-
         </li>
     {% endfor %}
 
