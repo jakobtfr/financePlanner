@@ -5,3 +5,5 @@ instance/
 .idea/
 
 __pycache__/
+
+readme_pictures/
