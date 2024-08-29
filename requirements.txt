@@ -1,0 +1,6 @@
+Flask~=3.0.3
+Flask-SQLAlchemy
+Flask-Login
+SQLAlchemy~=2.0.31
+Werkzeug~=3.0.3
+plotly~=5.23.0
