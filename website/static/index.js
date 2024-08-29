@@ -58,27 +58,36 @@ function updateDisplay() {
     var showCents = document.getElementById('toggleCents').checked;
     var elements = document.querySelectorAll('.money-display');
 
-    elements.forEach(function(element) {
+    elements.forEach(function (element) {
         var value = parseFloat(element.getAttribute('data-money'));
         element.textContent = showCents ? (Math.floor(value * 100) / 100).toFixed(2) : Math.floor(value);
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateDisplay();  // Update display on page load
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Select all alerts
     const alerts = document.querySelectorAll('.alert');
 
     // Iterate over each alert
-    alerts.forEach(function(alert) {
+    alerts.forEach(function (alert) {
         // Set a timeout to hide the alert after 5 seconds (5000 milliseconds)
-        setTimeout(function() {
+        setTimeout(function () {
             // Use Bootstrap's 'fade' class to hide the alert
             alert.classList.remove('show');
             alert.classList.add('fade');
         }, 5000);
     });
 });
+
+function generateSankey() {
+    fetch('/generate-sankey', {
+        method: 'GET'
+
+    }).then((_res) => {
+    window.location.href = "/"
+});
+}

@@ -46,3 +46,12 @@ class User(db.Model, UserMixin):
         total_income = sum(income.money.value for income in self.incomes if income.money)
         total_expenses = sum(expense.money.value for expense in self.expenses if expense.money)
         return total_income - total_expenses
+
+    @property
+    def total_income(self):
+        return sum(income.money.value for income in self.incomes if income.money)
+
+    @property
+    def total_expense(self):
+        return sum(expense.money.value for expense in self.expenses if expense.money)
+

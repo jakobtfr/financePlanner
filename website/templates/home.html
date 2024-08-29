@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-
-    <h1 align="center">Overview</h1>
+    <br>
+    <h1 style="text-align: center;">Overview</h1>
     {% if user.incomes %}
         <h2> Incomes </h2>
     {% endif %}
@@ -15,9 +15,14 @@
             {% if income.type %}
                 Type: {{ income.type }}
             {% endif %}
+            | Percentage: {{ "%.2f"|format((income.money.value / user.total_income) * 100) }}%
+
+
             <button type="button" class="close" onclick="deleteIncome({{ income.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
+
+
         </li>
     {% endfor %}
 
@@ -31,6 +36,8 @@
             {% if expense.type %}
                 Type: {{ expense.type }}
             {% endif %}
+            | Percentage: {{ "%.2f"|format((expense.money.value / user.total_expense) * 100) }}%
+
             <button type="button" class="close" onclick="deleteExpense({{ expense.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -60,7 +67,8 @@
         <input type="text" name="expense_type" id="expense_type" class="form-control"
                placeholder="Enter Expense Type (Optional)">
         <br>
-        <div align="center">
+        <div style="display: flex; justify-content: space-between;">
+            <button type="button" class="btn btn-primary" onclick="generateSankey()">Generate Sankey</button>
             <button type="submit" class="btn btn-primary">Add</button>
         </div>
     </form>

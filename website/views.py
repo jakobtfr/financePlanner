@@ -1,4 +1,5 @@
 import json
+import plotly.graph_objs as go
 
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
@@ -81,3 +82,67 @@ def delete_expense():
             db.session.commit()
 
     return jsonify({})
+
+
+@views.route('/generate-sankey', methods=['GET'])
+def generate_sankey():
+    incomes = db.session.query(Income).filter_by(user_id=current_user.id).all()
+    expenses = db.session.query(Expense).filter_by(user_id=current_user.id).all()
+
+    if not incomes and not expenses:
+        flash("Add an income or expense", category='error')
+    else:
+        income_amount = [income.amount for income in incomes]
+        expense_amount = [expense.amount for expense in expenses]
+
+        income_types = [income.type for income in incomes]
+        expense_types = [expense.type for expense in expenses]
+
+        budget = sum(income_amount)
+        total_expenses = sum(expense_amount)
+
+        total_amounts = income_amount + [budget] + expense_amount
+        labels = income_types + ['Budget'] + expense_types
+
+        source = []
+        target = []
+        value = []
+
+        budget_index = len(income_types)
+
+        for i in range(budget_index):
+            source.append(i)
+            target.append(budget_index)
+            value.append(total_amounts[i])
+
+        for i in range(budget_index + 1, len(labels)):
+            source.append(budget_index)
+            target.append(i)
+            value.append(total_amounts[i])
+
+        fig = go.Figure(data=[go.Sankey(
+            node=dict(
+                pad=15,
+                thickness=10,
+                line=dict(color="black", width=1),
+                label=labels,
+                color="blue",
+            ),
+            link=dict(
+                source=source,
+                target=target,
+                value=value
+            ))])
+        if budget < total_expenses:
+            title = dict(text="Expenses are higher than budget!",
+                         font=dict(color="red"))
+            fig.update_layout(
+                title=dict(text="Overview", subtitle=title),
+            )
+        else:
+            fig.update_layout(
+                title=dict(text="Overview")
+            )
+
+        fig.show()
+        return jsonify({})
