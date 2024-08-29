@@ -20,6 +20,6 @@ A simple web app to help plan your finances by having a clear overview over your
 
 ## Usage
 
-![Screenshot 2024-08-29 195156](https://github.com/user-attachments/assets/6b078c93-dd53-4e8e-9d42-ea425ab07d40)
-![Screenshot 2024-08-29 195242](https://github.com/user-attachments/assets/fda142c5-5ebe-424d-b707-1c296778cda0)
-![Screenshot 2024-08-29 195347](https://github.com/user-attachments/assets/b794b686-c089-4bce-acc4-3f086915520a)
+![Income / Expense Overview](https://github.com/user-attachments/assets/6b078c93-dd53-4e8e-9d42-ea425ab07d40)
+![Sankey Visualization](https://github.com/user-attachments/assets/fda142c5-5ebe-424d-b707-1c296778cda0)
+![Sankey Visualization with expenses greater than budget](https://github.com/user-attachments/assets/b794b686-c089-4bce-acc4-3f086915520a)
