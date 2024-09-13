@@ -1,5 +1,6 @@
 .switch {
     position: relative;
+    margin-right: 10px;
     display: inline-block;
     width: 40px;
     height: 20px;
@@ -35,7 +36,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(16px);
+    transform: translateX(18px);
 }
 
 /* Hide the default HTML checkbox */
@@ -59,3 +60,4 @@ input:checked + .slider:before {
     font-size: 0.8rem;
     white-space: nowrap;
 }
+

@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <br>
-    <h1 style="text-align: center;">Overview</h1>
+    <h1 style="text-align: center;">Monthly overview</h1>
     {% if user.incomes %}
         <h2> Incomes </h2>
     {% endif %}
@@ -13,7 +13,7 @@
             {% if income.type %}
                 Type: {{ income.type }}
             {% endif %}
-            | Percentage: {{ "%.2f"|format((income.money.value / user.total_income) * 100) }}%
+            | {{ "%.2f"|format((income.money.value / user.total_income) * 100) }}% of total incomes
             <button type="button" class="close" onclick="deleteIncome({{ income.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -30,7 +30,7 @@
             {% if expense.type %}
                 Type: {{ expense.type }}
             {% endif %}
-            | Percentage: {{ "%.2f"|format((expense.money.value / user.total_expense) * 100) }}%
+            | {{ "%.2f"|format((expense.money.value / user.total_expense) * 100) }}% of total expenses
 
             <button type="button" class="close" onclick="deleteExpense({{ expense.id }})">
                 <span aria-hidden="true">&times;</span>
@@ -39,13 +39,22 @@
 
     {% endfor %}
     <br>
-    Net:
+    Monthly net:
     {% if user.net > 0 %}
         <p style="color:#32CD32"><span class="money-display" data-money="{{ user.net }}">{{ user.net }}</span>€</p>
     {% elif user.net < 0 %}
         <p style="color:#FF6347"><span class="money-display" data-money="{{ user.net }}">{{ user.net }}</span>€</p>
     {% else %}
         <span class="money-display" data-money="{{ user.net }}">{{ user.net }}</span>€
+    {% endif %}
+    <br>
+    Annual net:
+    {% if user.net > 0 %}
+        <p style="color:#32CD32"><span class="money-display" data-money="{{ user.net * 12}}">{{ user.net * 12 }}</span>€</p>
+    {% elif user.net < 0 %}
+        <p style="color:#FF6347"><span class="money-display" data-money="{{ user.net * 12 }}">{{ user.net * 12}}</span>€</p>
+    {% else %}
+        <span class="money-display" data-money="{{ user.net * 12 }}">{{ user.net * 12 }}</span>€
     {% endif %}
 
 
@@ -61,10 +70,21 @@
         <input type="text" name="expense_type" id="expense_type" class="form-control"
                placeholder="Enter Expense Type (Optional)">
         <br>
-        <div style="display: flex; justify-content: space-between;">
-            <button type="button" class="btn btn-primary" onclick="generateSankey()">Generate Sankey</button>
-            <button type="submit" class="btn btn-primary">Add</button>
-        </div>
+        {% if user.incomes or user.expenses %}
+            <div style="display: flex; justify-content: space-between;">
+                <button type="button" class="btn btn-primary" onclick="generateSankey()">Generate Sankey</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary">Years to financial freedom</button>
+
+        {% else %}
+            <div style="display: flex; justify-content: right">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        {% endif %}
+
+
     </form>
 {% endblock %}
 

@@ -14,9 +14,11 @@ def create_app():
 
     from .views import views
     from .auth import auth
+    from .calculators import calculators
 
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
+    app.register_blueprint(calculators, url_prefix="/calculators")
 
     from .models import User
 

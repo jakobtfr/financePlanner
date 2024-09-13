@@ -88,8 +88,8 @@ function generateSankey() {
         method: 'GET'
 
     }).then((_res) => {
-    window.location.href = "/"
-});
+        window.location.href = "/"
+    });
 }
 
 function delete_account() {
@@ -101,3 +101,14 @@ function delete_account() {
         });
     }
 }
+
+function compoundFrequency() {
+    const dropdownItems = document.getElementsByName('compound_frequency')
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function () {
+            const selectedFrequency = this.getAttribute('data-value');
+        })
+    })
+}
+
