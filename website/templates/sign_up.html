@@ -11,19 +11,20 @@
             </label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/>
         </div>
-
+        <br>
         <div class="form-group">
             <label for="username">Username
             </label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"/>
         </div>
-
+        <br>
         <div class="form-group">
             <label for="password1">Password
             </label>
             <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password"/>
+            <small id="passwordHelp" class="form-text text-muted">Password must be at least 7 characters long.</small>
         </div>
-
+        <br>
         <div class="form-group">
             <label for="password2">Confirm password
             </label>
@@ -31,7 +32,6 @@
         </div>
         <br/>
         <button type="submit" class="btn btn-primary"> Submit</button>
-
     </form>
 {% endblock %}
 

@@ -61,3 +61,17 @@ input:checked + .slider:before {
     white-space: nowrap;
 }
 
+#deleteButton {
+    color: black;
+}
+
+
+#expense {
+    width: 5%;
+}
+
+#income {
+    width: 5%;
+}
+
+

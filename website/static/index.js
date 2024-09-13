@@ -1,5 +1,4 @@
 function deleteIncome(incomeId) {
-    // Show confirmation dialog
     if (confirm("Are you sure you want to delete this income entry?")) {
         // If the user confirms, make the delete request
         fetch('/delete-income', {
@@ -10,26 +9,17 @@ function deleteIncome(incomeId) {
             body: JSON.stringify({incomeId: incomeId})
         })
             .then(response => response.json())
-            .then(data => {
-                fetch('/delete-income', {
-                    method: 'POST',
-                    body: JSON.stringify({incomeId: incomeId})
-                }).then((_res) => {
+            .then((_res) => {
                     window.location.href = "/"
-                });
-                // Handle the response
-                console.log('Income deleted successfully');
-                // Optionally, refresh the page or update the UI
-                // location.reload(); // Uncomment this to refresh the page
-            })
+                    console.log('Income deleted successfully');
+                }
+            )
             .catch(error => console.error('Error:', error));
     }
 }
 
 function deleteExpense(expenseId) {
-    // Show confirmation dialog
     if (confirm("Are you sure you want to delete this expense entry?")) {
-        // If the user confirms, make the delete request
         fetch('/delete-expense', {
             method: 'POST',
             headers: {
@@ -38,18 +28,11 @@ function deleteExpense(expenseId) {
             body: JSON.stringify({expenseId: expenseId})
         })
             .then(response => response.json())
-            .then(data => {
-                fetch('/delete-expense', {
-                    method: 'POST',
-                    body: JSON.stringify({expenseId: expenseId})
-                }).then((_res) => {
+            .then((_res) => {
                     window.location.href = "/"
-                });
-                // Handle the response
-                console.log('Expense deleted successfully');
-                // Optionally, refresh the page or update the UI
-                // location.reload(); // Uncomment this to refresh the page
-            })
+                    console.log('Expense deleted successfully');
+                }
+            )
             .catch(error => console.error('Error:', error));
     }
 }
@@ -68,20 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateDisplay();  // Update display on page load
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Select all alerts
-    const alerts = document.querySelectorAll('.alert');
-
-    // Iterate over each alert
-    alerts.forEach(function (alert) {
-        // Set a timeout to hide the alert after 5 seconds (5000 milliseconds)
-        setTimeout(function () {
-            // Use Bootstrap's 'fade' class to hide the alert
-            alert.classList.remove('show');
-            alert.classList.add('fade');
-        }, 5000);
-    });
-});
 
 function generateSankey() {
     fetch('/generate-sankey', {
@@ -102,13 +71,13 @@ function delete_account() {
     }
 }
 
-function compoundFrequency() {
-    const dropdownItems = document.getElementsByName('compound_frequency')
+window.setTimeout(function () {
+    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove();
+    });
+}, 4000);
 
-    dropdownItems.forEach(item => {
-        item.addEventListener('click', function () {
-            const selectedFrequency = this.getAttribute('data-value');
-        })
-    })
+function setContribution(value) {
+    document.getElementById("contribution").value = value;
 }
 

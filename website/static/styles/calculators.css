@@ -1,3 +1,7 @@
 .custom-outline .form-check-input {
     outline: 1px solid #000000;
 }
+
+select[class=form-select] {
+    max-width: 150px;
+}

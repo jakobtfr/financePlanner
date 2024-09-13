@@ -1,5 +1,6 @@
 import json
 import plotly.graph_objs as go
+import plotly.io as pio
 
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
@@ -145,4 +146,6 @@ def generate_sankey():
             )
 
         fig.show()
-        return jsonify({})
+        plot_html = pio.to_html(fig, full_html=False, include_plotlyjs='cdn')
+
+        return jsonify({'plot_html' : plot_html})

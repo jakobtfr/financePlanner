@@ -2,10 +2,8 @@ import plotly.express as px
 import pandas as pd
 import plotly.io as pio
 
-from flask import Blueprint, render_template, request, flash, jsonify
-from flask_login import login_required, current_user
-from jinja2 import Template, Environment, FileSystemLoader
-from plotly.io import to_html
+from flask import Blueprint, render_template, request, jsonify
+from flask_login import current_user
 
 calculators = Blueprint('calculators', __name__)
 
@@ -50,7 +48,7 @@ def compoundInterest():
         Contribution=amount_paid,
     ))
 
-    fig = px.line(df, x='Year', y=['Value', 'Contribution'], title="Compound Interest", markers=True,
+    fig = px.line(df, x='Year', y=['Value', 'Contribution'], title="Compound Interest Visualization", markers=True,
                   labels={
                       'Year': 'Years after investment',
                       'value': 'Euros (€)',
