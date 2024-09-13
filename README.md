@@ -23,8 +23,8 @@ Includes different calculators like compound interest, which help with long-term
 
 ## Usage
 
-![Overview](https://github.com/user-attachments/assets/6b078c93-dd53-4e8e-9d42-ea425ab07d40)
-Overview <br>
+![Overview](https://github.com/user-attachments/assets/f05a51ec-a62a-4152-81e2-d38b62089530)
 
-![Sankey Visualization with expenses greater than budget](https://github.com/user-attachments/assets/b794b686-c089-4bce-acc4-3f086915520a)
-Sankey Visualization
+![Sankey](https://github.com/user-attachments/assets/03a3ff1b-cb6e-4d2a-9141-f33fcdc27539)
+![compound1](https://github.com/user-attachments/assets/03efe1ae-6e96-4ea4-93d0-0963a77baebb)
+![compound2](https://github.com/user-attachments/assets/786d6fc2-64b4-4857-b62b-7143f31eb528)
