@@ -1,10 +1,12 @@
 # financePlanner
 A simple web app to help plan your finances by having a clear overview over your incomes and expenses and visualizing them.
+Includes different calculators like compound interest, which help with long-term planning .
 
 ## Features
 - Create an account to store your data
 - Get a clear overview over how much you're earning and spending
 - Visualize the cashflow to see where you can optimize your financial decisions
+- Set yourself up for success by planning for the long-term through calculators.
 
 ## Requirements
 - Flask
@@ -13,6 +15,7 @@ A simple web app to help plan your finances by having a clear overview over your
 - SQLAlchemy
 - Werkzeug
 - plotly
+- pandas
 
 ### Install Dependencies via pip
 1) cd to the root directory
